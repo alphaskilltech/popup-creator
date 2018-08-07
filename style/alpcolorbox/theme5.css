@@ -1,0 +1,112 @@
+/*
+    Colorbox Core Style:
+
+    The following CSS is consistent between example themes and should not be altered.
+
+*/
+#alpcolorbox, #alpcboxOverlay, #alpcboxWrapper{position:absolute; top:0; left:0; z-index:9999; overflow:hidden;}
+
+#alpcboxWrapper {max-width:none;}
+
+#alpcboxOverlay{position:fixed; width:100%; height:100%;}
+
+#alpcboxMiddleLeft, #alpcboxBottomLeft{clear:left;}
+
+#alpcboxContent{position:relative;}
+
+#alpcboxLoadedContent{overflow:auto; -webkit-overflow-scrolling: touch;}
+
+#alpcboxTitle{margin:0;}
+
+#alpcboxLoadingOverlay, #alpcboxLoadingGraphic{position:absolute; top:0; left:0; width:100%; height:100%;}
+
+#alpcboxPrevious, #alpcboxNext, #alpcboxClose, #alpcboxSlideshow{cursor:pointer;}
+
+.alpcboxPhoto{float:left; margin:auto; border:0; display:block; max-width:none; -ms-interpolation-mode:bicubic;}
+
+.alpcboxIframe{width:100%; height:100%; display:block; border:0; padding:0; margin:0;}
+
+#alpcolorbox, #alpcboxContent, #alpcboxLoadedContent{box-sizing:content-box; -moz-box-sizing:content-box; -webkit-box-sizing:content-box;}
+
+.formfileds{
+    margin-bottom: 0px !important;
+    width: 90% !important;
+    border-left-width: 5px !important;
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+}
+button, html [type="button"], [type="reset"], [type="submit"]{
+    line-height:.5 !important;
+}
+/* 
+    User Style:
+    Change the following styles to modify the appearance of Colorbox.  They are
+
+    ordered & tabbed in a way that represents the nesting of the generated HTML.
+*/
+
+#alpcboxOverlay{opacity: 0.9; filter: alpha(opacity = 90);}
+
+.alpcboxOverlayBg {background:#000;}
+
+#alpcolorbox{outline:0;}
+
+    #alpcboxTopLeft{width:14px; height:14px; background:url(../../img/colorbox5/controls.png) no-repeat 0 0;}
+
+    #alpcboxTopCenter{height:14px; background:url(../../img/colorbox5/border.png) repeat-x top left;}
+
+    #alpcboxTopRight{width:14px; height:14px; background:url(../../img/colorbox5/controls.png) no-repeat -36px 0;}
+
+    #alpcboxBottomLeft{width:14px; height:43px; background:url(../../img/colorbox5/controls.png) no-repeat 0 -32px;}
+
+    #alpcboxBottomCenter{height:43px; background:url(../../img/colorbox5/border.png) repeat-x bottom left;}
+
+    #alpcboxBottomRight{width:14px; height:43px; background:url(../../img/colorbox5/controls.png) no-repeat -36px -32px;}
+
+    #alpcboxMiddleLeft{width:14px; background:url(../../img/colorbox5/controls.png) repeat-y -175px 0;}
+
+    #alpcboxMiddleRight{width:14px; background:url(../../img/colorbox5/controls.png) repeat-y -211px 0;}
+
+    #alpcboxContent{background:#fff; overflow:visible;}
+
+        .alpcboxIframe{background:#fff;}
+
+        #alpcboxError{padding:50px; border:1px solid #ccc;}
+
+        #alpcboxLoadedContent{padding:10px;}
+
+        #alpcboxLoadingOverlay{background:url(../../img/colorbox5/loading_background.png) no-repeat center center;}
+
+        #alpcboxLoadingGraphic{background:url(../../img/colorbox5/loading.gif) no-repeat center center;}
+
+        #alpcboxTitle{position:absolute; bottom:-25px; left:0; text-align:center; width:100%; font-weight:bold; color:#7C7C7C;}
+
+        #alpcboxCurrent{position:absolute; bottom:-25px; left:58px; font-weight:bold; color:#7C7C7C;}
+
+        /* these elements are buttons, and may need to have additional styles reset to avoid unwanted base styles */
+
+        #alpcboxPrevious, #alpcboxNext, #alpcboxSlideshow, #alpcboxClose {border:0; padding:0; margin:0; overflow:visible;  position:absolute; bottom:-29px; background:url(../../img/colorbox5/controls.png) no-repeat 0px 0px; width:23px; height:23px; text-indent:-9999px;}
+  
+        /* avoid outlines on :active (mouseclick), but preserve outlines on :focus (tabbed navigating) */
+
+        #alpcboxPrevious:active, #alpcboxNext:active, #alpcboxSlideshow:active, #alpcboxClose:active {outline:0;}
+
+        #alpcboxPrevious{left:0px; background-position: -51px -25px;}
+
+        #alpcboxPrevious:hover{background-position:-51px 0px;}
+
+        #alpcboxNext{left:27px; background-position:-75px -25px;}
+
+        #alpcboxNext:hover{background-position:-75px 0px;}
+
+        #alpcboxClose{right:0; background-position:-100px -25px;}
+
+        #alpcboxClose:hover{background-position:-100px 0px;}
+
+        .alpcboxSlideshow_on #alpcboxSlideshow{background-position:-125px 0px; right:27px;}
+
+        .alpcboxSlideshow_on #alpcboxSlideshow:hover{background-position:-150px 0px;}
+
+        .alpcboxSlideshow_off #alpcboxSlideshow{background-position:-150px -25px; right:27px;}
+
+        .alpcboxSlideshow_off #alpcboxSlideshow:hover{background-position:-125px 0px;}
