@@ -39,6 +39,9 @@
 button, html [type="button"], [type="reset"], [type="submit"]{
     line-height:.5 !important;
 }
+.property_values{
+    display: none !important;
+}
 /* 
     User Style:
 

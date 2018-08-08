@@ -210,14 +210,18 @@ $(window).ready(function ()  {
                     }); 
                 
                 var postid = $("#showcustpostid").val();
-                if(postid != ''){
-                    
+                if(postid ==  ''){
+                    postid = "000";
+                }
+                // if(postid != ''){
                 var selectedid = postid.split(",");
                 for(var i in selectedid) {
                 var optionVal = selectedid[i];
                 $("#multi-select-post").find("option[value="+optionVal+"]").prop("selected", "selected");
                     }
                 $("#multi-select-post").multiselect('refresh'); 
-                }
+                // }else{
+                    // alert("fgh");
+                // }
         });          
 </script>

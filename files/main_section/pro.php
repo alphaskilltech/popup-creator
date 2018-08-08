@@ -105,7 +105,7 @@
 												        	</div>
 														</div>	
 								    		        </div>
-													</div><br>																			
+													<br></div><br>																			
 											<span class="liquid-width">Show on Selected Posts : </span><label class="switch"><input class="input-width-static js-on-all-posts" id="SelectePosts" type="checkbox" name="SelectePosts" <?php echo $alpSelectePosts;?> /><span class="slider round"></span></label><br>
 											<div class="js-all-posts-content acordion-main-div-content">
 											<?php echo createRadiobuttons($postsRadio, "OptionsPosts", true, esc_html($alpOptionsPosts), "radiobuttons"); ?>

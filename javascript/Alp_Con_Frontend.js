@@ -707,35 +707,27 @@ ALPCONPopup.prototype.alpPopupLoginUsers = function () {
 			});		
 		}		
 };
-
 // Select Page to show popup
 ALPCONPopup.prototype.alppopupSelectePages = function () {
 	var OptionsPages = this.popupData['OptionsPages'];
 	var ShowAllPageID = this.popupData['ShowAllPageID'];
 	var ShowCustomPageID = this.popupData['ShowCustomPageID'];
-	// alert(ShowAllPageID);
 	if(OptionsPages == "selected"){
 		for (i = 0; i < ShowCustomPageID.length; i++) {
 		var Pageid = "PageId_"+my_script_vars.postID;
-		// alert(ShowCustomPageID[i]);
-		// alert("Pageid"+Pageid);
 		if(ShowCustomPageID[i] == Pageid){
-			jQuery('#alpcolorbox').load("alpPopupClose", function () {
-				jQuery('#alpcolorbox').css("display", "block");			
-				jQuery("#alpcboxOverlay").css("display", "block");
-			});
-		 }
-	   }	 
+				jQuery('#alpcolorbox').removeClass("property_values");			
+				jQuery("#alpcboxOverlay").removeClass("property_values");
+		    }
+	     }	 
 	 }else{
 		if(ShowAllPageID){
 			for (i = 0; i < ShowAllPageID.length; i++) {
-			jQuery('#alpcolorbox').load("alpPopupClose", function () {
-				jQuery('#alpcolorbox').css("display", "block");			
-				jQuery("#alpcboxOverlay").css("display", "block");
-			});
-		 }
-	  }
-   }
+				jQuery('#alpcolorbox').removeClass("property_values");			
+				jQuery("#alpcboxOverlay").removeClass("property_values");
+		    }
+	    }
+    }
 };
 // Select Post to show popup
 ALPCONPopup.prototype.alppopupSelectePosts = function () {
@@ -746,23 +738,19 @@ ALPCONPopup.prototype.alppopupSelectePosts = function () {
 	  for (a = 0; a < ShowCustomPostID.length; a++) { 
 		var Pageid = "PostId_"+my_script_vars.postID;
 		if(ShowCustomPostID[a] == Pageid){
-			jQuery('#alpcolorbox').load("alpPopupClose", function () {
-				jQuery('#alpcolorbox').css("display", "block");			
-				jQuery("#alpcboxOverlay").css("display", "block");
-			});
+			jQuery('#alpcolorbox').removeClass("property_values");			
+			jQuery("#alpcboxOverlay").removeClass("property_values");
 	     }
 	  }
 	}else{
 		if(ShowAllPostID){
 			for (a = 0; a < ShowAllPostID.length; a++) {
-			jQuery('#alpcolorbox').load("alpPopupClose", function () {
-				jQuery('#alpcolorbox').css("display", "block");			
-				jQuery("#alpcboxOverlay").css("display", "block");
-			});
-		}
-	}
-  }
-};
+				jQuery('#alpcolorbox').removeClass("property_values");			
+				jQuery("#alpcboxOverlay").removeClass("property_values");
+		   }
+	   }
+    }
+ };
 
 // Popup date range show
 ALPCONPopup.prototype.alpopuppopupDateRange = function () {
@@ -943,6 +931,10 @@ ALPCONPopup.prototype.colorboxEventsListener = function (){
 	var buttonDelayValue = this.popupData['buttonDelayValue'];
 	var PopupClosingTimer = that.popupData['PopupClosingTimer'];
 	var Inactivitytime = that.popupData['Inactivitytime'];
+	var popupSelectePages = that.popupData['SelectePages'];
+	var popupSelectePosts = that.popupData['SelectePosts'];
+
+
 
 
 	repetitivePopupPeriod = parseInt(repetitivePopupPeriod)*1000;
@@ -953,7 +945,27 @@ ALPCONPopup.prototype.colorboxEventsListener = function (){
 			jQuery('html, body').css({ overflow: 'hidden' });
 		}
 	});
-
+	   
+	
+		jQuery('#alpcolorbox').on("alpPopupClose", function () {
+			jQuery('#alpcolorbox').addClass("property_values");
+			jQuery("#alpcboxOverlay").addClass("property_values");	
+			if(popupSelectePages){	
+			that.alppopupSelectePages();
+			}	
+			if(popupSelectePosts){	
+				// alert(popupSelectePosts);
+				that.alppopupSelectePosts();
+			}
+		});
+	
+	// if(popupSelectePosts){	
+	// 	jQuery('#alpcolorbox').on("alpPopupClose", function () {
+	// 		jQuery('#alpcolorbox').addClass("property_values");
+	// 		jQuery("#alpcboxOverlay").addClass("property_values");
+	// 	 });	   
+	//  that.alppopupSelectePosts();
+	// }
 	jQuery('#alpcolorbox').on("alpColorboxOnCompleate", function () {
 
 		if (that.popupCloseButton && buttonDelayValue) {
@@ -1010,8 +1022,6 @@ ALPCONPopup.prototype.alpShowColorboxWithOptions = function() {
 		var popupDisableOverlay = that.varToBool(that.popupData['DisableOverlay']);
 		that.popupAutoClosePopup = that.varToBool(that.popupData['AutoClosePopup']);
 		var popupUserStatus = that.varToBool(that.popupData['UserStatus']);	
-		var popupSelectePages = that.varToBool(that.popupData['SelectePages']);
-		var popupSelectePosts = that.varToBool(that.popupData['SelectePosts']);
 		var popupDateRange = that.varToBool(that.popupData['DateRange']);
 		var popupSchedulePopUp = that.varToBool(that.popupData['SchedulePopUp']);	
 	
@@ -1117,22 +1127,7 @@ ALPCONPopup.prototype.alpShowColorboxWithOptions = function() {
 
 		if (popupUserStatus) {
 			 that.alpPopupLoginUsers();
-		}
-		if(popupSelectePages){	
-			jQuery('#alpcolorbox').load("alpPopupClose", function () {
-				jQuery('#alpcolorbox').css("display", "none");
-				jQuery("#alpcboxOverlay").css("display", "none");
-			 });	   
-		 that.alppopupSelectePages();
-	    }
-	    if(popupSelectePosts){	
-			jQuery('#alpcolorbox').load("alpPopupClose", function () {
-				jQuery('#alpcolorbox').css("display", "none");
-				jQuery("#alpcboxOverlay").css("display", "none");
-			 });	   
-		 that.alppopupSelectePosts();
-	    }
-
+		}		
 	    if(popupDateRange){	
 		 that.alpopuppopupDateRange();
 		}
@@ -1187,6 +1182,8 @@ ALPCONPopup.prototype.alpShowColorboxWithOptions = function() {
 				};
 
 			   jQuery('#alpcolorbox').trigger("alpColorboxOnOpen",[]);
+			   jQuery('#alpcolorbox').trigger("alpPopupClose",[]);
+
 
 			},
 			// onLoad: function(){
