@@ -30,8 +30,8 @@ beckend.prototype.switchPopupActive = function() {
 	jQuery(".switch-checkbox").bind('change', function() {
 		var dataOptions = {};
 		var popupId = jQuery(this).attr('data-switch-id');
-		var ajaxNonce = jQuery(this).attr('data-checkbox-ajaxNonce');
-		dataOptions.ajaxNonce = ajaxNonce;	
+		var ajax_Nonce = jQuery(this).attr('data-checkbox-ajax_Nonce');
+		dataOptions.ajax_Nonce = ajax_Nonce;	
 
 		if(jQuery(this).is(":checked")) {
 			that.popupStatusChenge('on', popupId, dataOptions);	
@@ -45,7 +45,7 @@ beckend.prototype.switchPopupActive = function() {
 	beckend.prototype.popupStatusChenge = function(status, popupId, dataOptions) {
 		var data = {
 			action: 'change_popup_status',
-			ajaxNonce: dataOptions.ajaxNonce,
+			ajax_Nonce: dataOptions.ajax_Nonce,
 			popupId: popupId,
 			popupStatus: status
 		};
@@ -59,11 +59,11 @@ beckend.prototype.switchPopupActive = function() {
 
 		jQuery('#alpcolorbox').ready(function () {
 			jQuery('#alpcolorbox').on('alpPopupCleanup', function () {
-				var ajaxNonce = jQuery(this).attr('data-ajaxnonce');
-	
+				var ajax_Nonce = jQuery(this).attr('data-ajax_Nonce');
+				
 				var data = {
 					action: 'change_review_popup_show_period',
-					ajaxNonce: ALPCON_AJAX_NONCE
+					ajax_Nonce: ALP_CON_AJAX_NONCE
 				};
 				jQuery.post(ajaxurl, data, function(response,d) {
 					jQuery.alpcolorbox.close();
@@ -77,10 +77,10 @@ beckend.prototype.switchPopupActive = function() {
 	beckend.prototype.popupReview = function() {
 		jQuery(".alp-dont-show-agin").on("click", function() {
 	
-			var ajaxNonce = jQuery(this).attr('data-ajaxnonce');
+			var ajax_Nonce = jQuery(this).attr('data-ajax_Nonce');
 			var data = {
 				action: 'close_review_panel',
-				ajaxNonce: ajaxNonce
+				ajax_Nonce: ajax_Nonce
 			};
 			jQuery.post(ajaxurl, data, function(response,d) {
 	
@@ -146,18 +146,19 @@ beckend.prototype.deletePopup = function() {
 			return false;
 		}
 		var popup_id = jQuery(this).attr("data-alp-popup-id");
-		var ajaxNonce = jQuery(this).attr('data-ajaxNonce');
-		var datas = {
-			action: 'delete_popup',
-			ajaxNonce: ajaxNonce,
+		var ajax_Nonce = jQuery(this).attr('data-ajax_Nonce');
+		var data = {
+			action: 'delete_popup_creator',
+			ajax_Nonce: ajax_Nonce,
 			popup_id: popup_id
 		}
 		// console.log(data);
-		jQuery.post(ajaxurl, datas, function(response,d) {
+		// alert(JSON.stringify(data));
+		jQuery.post(ajaxurl, data, function(response,d) {
 			location.reload();
 		});
 	});
-}
+};
 
 beckend.prototype.titleNotEmpty = function() {
 	jQuery("#add-form").submit(function() {
@@ -537,26 +538,28 @@ beckend.prototype.updateQueryStringParameterpopup = function (uri, key, value) {
 		return uri + separator + key + "=" + value;
 	}
 };
-
 beckend.prototype.popupPreview = function () {
 	var that = this;
-	jQuery('.alp-popup-preview').bind('click', function (e) {
+	jQuery('#alp-preview').bind('click', function (e) {
 		e.preventDefault();
 		var previewButton = jQuery(this);
+
 		/*checking if it's not null*/
 		if(typeof tinymce != 'undefined' && !!tinymce.activeEditor) {
 			jQuery("[name='"+tinymce.activeEditor.id+"']").html(tinymce.activeEditor.getContent());
 		}
-
 		var data = {
 			action: 'save_popup_preview_data',
-			ajaxNonce: backendLocalData.ajaxNonce,
+			// ajax_Nonce: backendLocalData.ajax_Nonce,
 			beforeSend: function () {
 				previewButton.prop('disabled', true);
 				previewButton.val('loading');
 			},
 			popupDta: jQuery("#add-form").serialize()
 		};
+
+// alert("action");
+
 		var newWindow = window.open('');
 		jQuery.post(ajaxurl, data, function(response,d) {
 			var popupId = parseInt(response);

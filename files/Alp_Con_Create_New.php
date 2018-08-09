@@ -460,8 +460,8 @@
 		)
 	);
 
-	$ajaxNonce = wp_create_nonce("alpPopupCreatorPageNonce");
-	$ajaxNoncePages = wp_create_nonce("alpPopupCreatorPagesNonce");
+	$ajax_Nonce = wp_create_nonce("alpPopupCreatorPageNonce");
+	$ajax_NoncePages = wp_create_nonce("alpPopupCreatorPagesNonce");
 	$pagesRadio = array(		
 		array(
 			"title" => "Show On All Pages :",
@@ -825,7 +825,7 @@
 
 											<span class="liquid-width">Reopen After Form Submission :</span><label class="switch"><input class="input-width-static" type="checkbox" name="reopenAfterSubmission" <?php  echo $alpReopenAfterSubmission;?> /><span class="slider round"></span></label><br><br>											
 
-											</div><br>
+											</div>
 										</div>
 									</div>
 								</div>

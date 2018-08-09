@@ -162,11 +162,11 @@ class ALPFunctions
 		<script type="text/javascript">
 			jQuery('.alp-already-did-review').each(function () {
 				jQuery(this).on('click', function () {
-					var ajaxNonce = jQuery(this).attr('data-ajaxnonce');
+					var ajax_Nonce = jQuery(this).attr('data-ajax_Nonce');
 
 					var data = {
 						action: 'dont_show_review_popup',
-						ajaxNonce: ajaxNonce
+						ajax_Nonce: ajax_Nonce
 					};
 					jQuery.post(ajaxurl, data, function(response,d) {
 						if(typeof jQuery.alpcolorbox != 'undefined') {
@@ -180,13 +180,13 @@ class ALPFunctions
 			});
 
 			jQuery('.alp-show-popup-period').on('click', function () {
-				var ajaxNonce = jQuery(this).attr('data-ajaxnonce');
+				var ajax_Nonce = jQuery(this).attr('data-ajax_Nonce');
 				var messageType = jQuery(this).attr('data-message-type');
 
 				var data = {
 					action: 'change_review_popup_show_period',
 					messageType: messageType,
-					ajaxNonce: ajaxNonce
+					ajax_Nonce: ajax_Nonce
 				};
 				jQuery.post(ajaxurl, data, function(response,d) {
 					if(typeof jQuery.alpcolorbox != 'undefined') {
@@ -241,11 +241,12 @@ class ALPFunctions
 		wp_enqueue_script('alp_colorbox');
 		wp_register_style('alp_colorbox_theme', ALP_CON_APP_POPUP_URL . "/style/alpcolorbox/alpthemes.css", array(), ALP_CON_POPUP_VERSION);
 		wp_enqueue_style('alp_colorbox_theme');
-		$ajaxNonce = wp_create_nonce("alpPopupCreatorReview");
+		
+		$ajax_Nonce = wp_create_nonce("alpPopupCreatorReview");
 
 		echo "<script>
 			jQuery(document).ready(function() {
-				ALPCON_AJAX_NONCE = '".$ajaxNonce."';
+				ALP_CON_AJAX_NONCE = '".$ajax_Nonce."';
 				var ALP_POPUP_SETTINGS = {
 					inline: true,
 					escKey: false,
@@ -266,7 +267,7 @@ class ALPFunctions
 	}
 
 	public static function getMaxOepnPopupContent($firstHeader, $type) {
-		$ajaxNonce = wp_create_nonce("alpPopupCreatorReview");
+		$ajax_Nonce = wp_create_nonce("alpPopupCreatorReview");
 		ob_start();
 		?>
 		<style>
@@ -323,9 +324,9 @@ class ALPFunctions
 				<p class="sgrb-review-mt20">Have your input in the development of our plugin, and we’ll provide better conversions for your site!<br /> Leave your 5-star positive review and help us go further to the perfection!</p>
 			</div>
 			<div class="alp-buttons-wrapper">
-				<button class="press press-grey alp-button-1 sg-already-did-review" data-ajaxnonce="<?php echo esc_attr($ajaxNonce); ?>">I already did</button>
-				<button class="press press-lightblue alp-button-3 sg-already-did-review" data-ajaxnonce="<?php echo esc_attr($ajaxNonce); ?>" onclick="window.open('<?php echo ALP_CON_REVIEW_URL; ?>')">You worth it!</button>
-				<button class="press press-grey alp-button-2 sg-show-popup-period" data-ajaxnonce="<?php echo esc_attr($ajaxNonce); ?>" data-message-type="<?php echo $type; ?>">Maybe later</button></div>
+				<button class="press press-grey alp-button-1 sg-already-did-review" data-ajax_Nonce="<?php echo esc_attr($ajax_Nonce); ?>">I already did</button>
+				<button class="press press-lightblue alp-button-3 sg-already-did-review" data-ajax_Nonce="<?php echo esc_attr($ajax_Nonce); ?>" onclick="window.open('<?php echo ALP_CON_REVIEW_URL; ?>')">You worth it!</button>
+				<button class="press press-grey alp-button-2 sg-show-popup-period" data-ajax_Nonce="<?php echo esc_attr($ajax_Nonce); ?>" data-message-type="<?php echo $type; ?>">Maybe later</button></div>
 			<div> </div>
 		</div>
 		<?php
@@ -387,19 +388,19 @@ class ALPFunctions
 
 	public static function addReview()
 	{
-		$ajaxNonce = wp_create_nonce("alpPopupCreatorReview");
+		$ajax_Nonce = wp_create_nonce("alpPopupCreatorReview");
 		return '<div class="alp-info-panel-wrapper">
 			<div class="alp-info-panel-row">
 				<div class="alp-info-panel-col-3">
 					<p class="alp-info-text alp-info-logo">
-						<span class="alp-info-text-white">Popup</span><span class="alp-info-text-highlight">Builder</span>
+						<span class="alp-info-text-white">Popup</span><span class="alp-info-text-highlight">Creator</span>
 					</p>
 					<p class="alp-info-text">
-						If you have any difficulties in using the options, please follow the link to <a href="https://sygnoos.ladesk.com/235213-Popup-Builder" class="alp-info-link">Knowledge Base</a>
+						If you have any difficulties in using the options, please follow the link to <a href="http://alphaskilltech.com/" class="alp-info-link">Knowledge Base</a>
 					</p>
 				</div>
 				<div class="alp-info-panel-col-3 alp-info-text-center">
-					<a class="alp-info-upgrade-pro alp-info-blink" href="http://popup-builder.com" target="_blank">
+					<a class="alp-info-upgrade-pro alp-info-blink" href="http://alphaskilltech.com/" target="_blank">
 						Upgrade NOW
 					</a>
 					<p class="alp-info-text">
@@ -409,23 +410,23 @@ class ALPFunctions
 				<div class="alp-info-panel-col-3">
 					<ul class="alp-info-menu alp-info-text">
 						<li>
-							<a class="alp-info-links" target="_blank" href="https://wordpress.org/support/plugin/popup-builder/reviews/?filter=5"><span class="dashicons dashicons-heart alp-info-text-white"></span><span class="alp-info-text"> Rate Us</span></a>
+							<a class="alp-info-links" target="_blank" href="https://wordpress.org/support/plugin/popup-creator/reviews/?filter=5"><span class="dashicons dashicons-heart alp-info-text-white"></span><span class="alp-info-text"> Rate Us</span></a>
 						</li>
 						<li>
 							<a class="alp-info-links" target="_blank" href="https://sygnoos.ladesk.com/submit_ticket"><span class="dashicons dashicons-megaphone alp-info-text-white"></span></span> Submit Ticket</a>
 						</li>
 						<li>
-							<a class="alp-info-links" target="_blank" href="https://wordpress.org/plugins/popup-builder/faq/"><span class="dashicons dashicons-editor-help alp-info-text-white"></span> FAQ</a>
+							<a class="alp-info-links" target="_blank" href="https://wordpress.org/plugins/popup-creator/faq/"><span class="dashicons dashicons-editor-help alp-info-text-white"></span> FAQ</a>
 						</li>
 						<li>
-							<a class="alp-info-links" target="_blank" href="mailto:support@popup-builder.com?subject=Hello"><span class="dashicons dashicons-email-alt alp-info-text-white"></span></span> Contact</a>
+							<a class="alp-info-links" target="_blank" href="mailto:support@popup-creator.com?subject=Hello"><span class="dashicons dashicons-email-alt alp-info-text-white"></span></span> Contact</a>
 						</li>
 					</ul>
 				</div>
 			</div>
 			<div>
 				<span class="alp-info-close">+</span>
-				<span class="alp-dont-show-agin" data-ajaxnonce="'.esc_attr($ajaxNonce).'">Don’t show again.</span>
+				<span class="alp-dont-show-agin" data-ajax_Nonce="'.esc_attr($ajax_Nonce).'">Don’t show again.</span>
 			</div>
 		</div>';
 	}

@@ -152,7 +152,7 @@ abstract class ALPCONPopup {
 
 		return $arr;
 	}
-	public static function deletes($id) {
+	public static function delete($id) {
 			$pop = self::findById($id);
 			$type =  $pop->getType();
 			$table = 'alp_con_'.$type.'_popup';

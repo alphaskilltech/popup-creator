@@ -558,7 +558,7 @@ ALPCONPopup.prototype.addToCounter = function (popupId) {
 
 	var data = {
 		action: 'send_to_open_counter',
-		ajaxNonce: ALPBParams.ajaxNonce,
+		ajax_Nonce: ALPBParams.ajax_Nonce,
 		params: params
 	};
 

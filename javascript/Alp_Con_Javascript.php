@@ -13,7 +13,11 @@ function alp_popup_admin_scripts($hook) {
 		wp_enqueue_media();
 		wp_register_script('javascript', ALP_CON_POPUP_URL . '/javascript/Alp_Con_Backend.js', array('jquery', 'wp-color-picker'));
 		wp_enqueue_script('jquery');
-		wp_enqueue_script('javascript');	
+		wp_enqueue_script('javascript');
+		$localizedData = array(
+		    'ajax_Nonce' => wp_create_nonce('popup-creator-ajax', 'alp_con_ajax_Nonce')
+		);
+		wp_localize_script('javascript', 'backendLocalData', $localizedData);	
     }
 	else if('toplevel_page_popupcreator' == $hook  || $hook == 'toplevel_page_popup-settings'){
 		wp_register_script('javascript', ALP_CON_POPUP_URL . '/javascript/Alp_Con_Backend.js', array('jquery'));
