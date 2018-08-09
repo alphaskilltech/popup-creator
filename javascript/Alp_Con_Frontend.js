@@ -325,6 +325,10 @@ ALPCONPopup.prototype.showPopup = function(id, isOnLoad) {
 	if (typeof ALP_POPUP_DATA[id] == "undefined") {
 		return;
 	}
+	if (!this.restrictIfThereIsPreviewPopup(id)) {
+		return false;
+	}
+
 	this.popupData = ALP_POPUP_DATA[id];
 	this.popupType = this.popupData['type'];
 	// this.isOnLoad = isOnLoad;
@@ -947,17 +951,21 @@ ALPCONPopup.prototype.colorboxEventsListener = function (){
 	});
 	   
 	
-		jQuery('#alpcolorbox').on("alpPopupClose", function () {
-			jQuery('#alpcolorbox').addClass("property_values");
-			jQuery("#alpcboxOverlay").addClass("property_values");	
-			if(popupSelectePages){	
+			
+			if(popupSelectePages){
+				jQuery('#alpcolorbox').on("alpPopupClose", function () {
+					jQuery('#alpcolorbox').addClass("property_values");
+					jQuery("#alpcboxOverlay").addClass("property_values");
 			that.alppopupSelectePages();
+				});
 			}	
 			if(popupSelectePosts){	
-				// alert(popupSelectePosts);
+				jQuery('#alpcolorbox').on("alpPopupClose", function () {
+					jQuery('#alpcolorbox').addClass("property_values");
+					jQuery("#alpcboxOverlay").addClass("property_values");
 				that.alppopupSelectePosts();
-			}
-		});
+			});
+		}
 	
 	// if(popupSelectePosts){	
 	// 	jQuery('#alpcolorbox').on("alpPopupClose", function () {

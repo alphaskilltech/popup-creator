@@ -188,7 +188,7 @@ class AlpConPopupGetData {
 		return $allCustomPosts;
 	}
 
-	public static function getPageUrl()
+	public static function getPopupPageUrl()
 	{
 		$args = array(
 			'sort_order' => 'asc',

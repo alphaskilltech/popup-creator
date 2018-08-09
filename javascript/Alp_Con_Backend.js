@@ -550,7 +550,7 @@ beckend.prototype.popupPreview = function () {
 
 		var data = {
 			action: 'save_popup_preview_data',
-			ajaxNonce: backendLocalizedData.ajaxNonce,
+			ajaxNonce: backendLocalData.ajaxNonce,
 			beforeSend: function () {
 				previewButton.prop('disabled', true);
 				previewButton.val('loading');

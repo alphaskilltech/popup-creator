@@ -670,7 +670,7 @@
 				<?php else: ?>
 					<h2>Create new popup</h2>
 				<?php endif; ?>
-				<?php $pageUrl = AlpConPopupGetData::getPageUrl(); ?>
+				<?php $pageUrl = AlpConPopupGetData::getPopupPageUrl(); ?>
 			</div>
 			<div class="button-wrapper">
 				<p class="submit">				
