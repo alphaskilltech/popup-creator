@@ -50,13 +50,13 @@ function alpPopupSave()
 	// $allSelectedCustomPosts = "";
 	$allSelectedCategories = alpSanitize("posts-all-categories", true);
 
-	if($OptionsPages == 'all' && $SelectePages == 'on' ) {
+	 if($OptionsPages == 'all' && $SelectePages == 'on') {
 		$AllPages = explode(",", alpSanitize('ShowAllPageID'));
 	}
-	if($OptionsPages == 'selected' && $SelectePages == 'on' ) {
+	if($OptionsPages == 'selected' && $SelectePages == 'on') {
 		$SelectedPages =  explode(",",alpSanitize('ShowCustomPageID'));
-	}
-
+	 }
+   
 	if($OptionsPosts == 'all' && $SelectePosts == 'on' ) {
 		$AllPost = explode(",", alpSanitize('ShowAllPostID'));
 	}
