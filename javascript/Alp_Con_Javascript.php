@@ -27,13 +27,10 @@ function alp_popup_admin_scripts($hook) {
 	if('popupcreator_page_popup-edit' == $hook) {
 		wp_register_script('Alp_Con_Range_Slider', ALP_CON_POPUP_URL . '/javascript/Alp_Con_Range_Slider.js', array('jquery'));
 		wp_enqueue_script('Alp_Con_Range_Slider');
-		// wp_register_script('Alp_Con_Bootstrap_Input', ALP_CON_POPUP_URL . '/javascript/Alp_Con_Bootstrap_Input.js', array('jquery'));		
-		// wp_enqueue_script('Alp_Con_Bootstrap_Input');
 		wp_enqueue_script('jquery');
 	}
 }
 function jquerydatepickerscript($hook) {
-	// wp_enqueue_script('jquerydatepick','https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js');
 	wp_enqueue_script('jquerydatepicker','https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js');		
 	wp_enqueue_script('jquerydatepickertime','https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js');
 	wp_enqueue_script('jquerydatetimepicker','https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js');

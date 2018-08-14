@@ -1,25 +1,8 @@
 function AplPopupInit(popupData) {
 	this.popupData = popupData;
-	this.cloneToHtmlPopup();
-	this.reopenPopupAfterSubmission();
-}
-
-AplPopupInit.prototype.cloneToHtmlPopup = function() {
-	var currentPopupId = this.popupData['id'];
-
-	/*When content does not have shortcode*/
-	if(jQuery("#alppb-all-content-"+currentPopupId).length == 0) {
-		return;
-	}
-	
-	jQuery("#alppb-all-content-"+currentPopupId).appendTo(jQuery('.alp-current-popup-'+currentPopupId));
-
-	this.popupResizing(currentPopupId);
-	jQuery('#alpcolorbox').bind('alpPopupCleanup', function() {
-		jQuery('#alppb-all-content-'+currentPopupId).appendTo(jQuery("#alp-popup-content-"+currentPopupId));
-	});
-
 	this.shortcodeInPopupContent();
+	this.reopenPopupAfterSubmission();
+	this.dontShowClick();
 }
 
 AplPopupInit.prototype.reopenPopupAfterSubmission = function() {
@@ -34,19 +17,30 @@ AplPopupInit.prototype.reopenPopupAfterSubmission = function() {
 			ALPCONPopup.setCookie('alpSubmitReloadingForm', currentPopupId);
 		});
 	}
-}
+};
 
-AplPopupInit.prototype.popupResizing = function(currentPopupId) {
-
-	var width = this.popupData['width'];
-	var height = this.popupData['height'];
-	var maxWidth = this.popupData['maxWidth'];
-	var maxHeight = this.popupData['maxHeight'];
-
-	if(maxWidth == '' && maxHeight == '') {
-		jQuery.alpcolorbox.resize({'width': width, 'height': height});
-	}
-}
+AplPopupInit.prototype.dontShowClick = function() {
+    var dontShowPopup = jQuery('#alpcboxLoadedContent [class^=alp-dont-show-popup]');
+    if (!dontShowPopup.length) {
+        return false;
+    }
+    var popupData = this.popupData;
+    dontShowPopup.each(function() {
+        jQuery(this).bind('click', function(e) {
+            e.preventDefault();
+            var expireTime = 365;
+            var classNameSearch = jQuery(this).attr('class').match(/^alp-dont-show-popup/);
+            var className = classNameSearch['input'];
+            var numberMatched = className.match(/^alp-dont-show-popup-(\d+$)/);
+            if (numberMatched) {
+                expireTime = parseInt(numberMatched[1]);
+            }
+            var popupId = parseInt(popupData['id']);
+            ALPCONPopup.setCookie('alpPopupDontShow' + popupId, expireTime, expireTime, true);
+            jQuery.alpcolorbox.close();
+        });
+    });
+};
 
 AplPopupInit.prototype.shortcodeInPopupContent = function() {
 
@@ -69,15 +63,12 @@ AplPopupInit.prototype.shortcodeInPopupContent = function() {
 			alpPopupID = '';
 		});
 	});
-}
-
+};
 AplPopupInit.prototype.overallInit = function() {
-	jQuery('.alp-popup-close').bind('click', function() {
-		jQuery.alpcolorbox.close();
-	});
-
-	
-}
+    jQuery('.alp-popup-close').bind('click', function() {
+        jQuery.sgcolorbox.close();
+    });   
+};
 
 AplPopupInit.prototype.initByPopupType = function() {
 	var data = this.popupData;

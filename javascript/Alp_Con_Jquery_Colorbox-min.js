@@ -1,12 +1,6 @@
-/*!
-	Colorbox 1.6.3
-	license: MIT
-	http://www.jacklmoore.com/colorbox
-*/
+
 (function ($, document, window) {
 	var
-	// Default settings object.
-	// See http://jacklmoore.com/colorbox for details.
 	defaults = {
 		// data sources
 		html: false,

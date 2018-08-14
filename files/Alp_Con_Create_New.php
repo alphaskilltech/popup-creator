@@ -237,10 +237,8 @@
 	$SchedulePopUpDate = alpBoolToChecked($popupProDefaultValues['SchedulePopUpDate']);
 	$MobileOnly = alpBoolToChecked($popupProDefaultValues['MobileOnly']);
 	$MobileDisable = alpBoolToChecked($popupProDefaultValues['MobileDisable']);
-
 	$Inactivity = alpBoolToChecked($popupProDefaultValues['Inactivity']);
 	$Inactivitytime = alpBoolToChecked($popupProDefaultValues['Inactivitytime']);
-
 	$WhileScrolling = alpBoolToChecked($popupProDefaultValues['WhileScrolling']);
 	$SelectePages = alpBoolToChecked($popupProDefaultValues['SelectePages']);
 	$OptionsPages = $popupProDefaultValues['OptionsPages'];
@@ -252,11 +250,8 @@
 	$ShowCustomPostID = $popupProDefaultValues['ShowCustomPostID'];
 	$UserStatus = alpBoolToChecked($popupProDefaultValues['UserStatus']);
 	$logedUser = $popupProDefaultValues['loggedin-user'];
-
 	$RandomPopUp = alpBoolToChecked($popupProDefaultValues['RandomPopUp']);
 	$AutoClosePopup = alpBoolToChecked($popupProDefaultValues['AutoClosePopup']);
-	// $PopupClosingTimer = alpBoolToChecked($popupProDefaultValues['PopupClosingTimer']);
-
 	$DisablePopup = alpBoolToChecked($popupProDefaultValues['DisablePopup']);
 	$DisableOverlay = alpBoolToChecked($popupProDefaultValues['DisableOverlay']);
 	$HideMobile = alpBoolToChecked($popupProDefaultValues['HideMobile']);
@@ -286,11 +281,8 @@
 	$maxHeight = $colorboxDeafultValues['maxHeight'];
 	$deafultFixed = $colorboxDeafultValues['fixed'];
 	$defaultDuration = $colorboxDeafultValues['duration'];
-	//$defaultDelay = $colorboxDeafultValues['delay'];
 	$contentClickBehavior = $colorboxDeafultValues['content-click-behavior'];
-
 	$defaultButtonDelayValue = $colorboxDeafultValues['buttonDelayValue'];
-
 	$alpEscKey = @alpSetChecked($alpEscKey, $escKey);
 	$alpCloseButton = @alpSetChecked($alpCloseButton, $closeButton);
 	$alpScrolling = @alpSetChecked($alpScrolling, $scrolling);
@@ -313,20 +305,15 @@
 	$alpSchedulePopUp  = @alpSetChecked($alpSchedulePopUp , $SchedulePopUp);
 	$alpMobileOnly = @alpSetChecked($alpMobileOnly, $MobileOnly);
 	$alpMobileDisable = @alpSetChecked($alpMobileDisable, $MobileDisable);
-
 	$alpInactivity = @alpSetChecked($alpInactivity, $Inactivity);
 	$alpWhileScrolling = @alpSetChecked($alpWhileScrolling, $WhileScrolling);
 	$alpSelectePages = @alpSetChecked($alpSelectePages, $SelectePages);
 	$alpShowAllPageID = @alpSetChecked($alpShowAllPageID, $ShowAllPageID);
 	$alpSelectePosts = @alpSetChecked($alpSelectePosts, $SelectePosts);
 	$alpShowAllPostID = @alpSetChecked($alpShowAllPostID, $ShowAllPostID);
-
 	$alpUserStatus = @alpSetChecked($alpUserStatus, $UserStatus);
 	$alpRandomPopUp = @alpSetChecked($alpRandomPopUp, $RandomPopUp);
 	$alpautoClosePopup = @alpSetChecked($alpautoClosePopup, $AutoClosePopup);
-	// $PopupClosingTimer = $popupProDefaultValues['PopupClosingTimer'];
-
-
 	$alpDisablePopup = @alpSetChecked($alpDisablePopup, $DisablePopup);
 	$alpDisableOverlay = @alpSetChecked($alpDisableOverlay, $DisableOverlay);
 	$alpHideMobile = @alpSetChecked($alpHideMobile, $HideMobile);
@@ -353,10 +340,6 @@
 	$alpToDate = @alpGetValue($alpDateRangeToDate, $DateRangeToDate);
 	$alpScheduleDate = @alpGetValue($alpSchedulePopUpDate, $SchedulePopUpDate);
 	$alpInactivitytime = @alpGetValue($alpInactivitytime, $Inactivitytime);
-	// $alpPopupClosingTimer = @alpGetValue($alpPopupClosingTimer, $PopupClosingTimer);
-
-
-
 	$alpRepetitivePopupPeriod = @alpGetValue($alpRepetitivePopupPeriod, $repetitivePopupPeriod);
 	$alpIntervelPopupTime = @alpGetValue($alpIntervelPopupTime, $intervelTime);
 	$alpCloseButtonDelay = @alpGetValue($alpCloseButtonDelay, $buttonDelayValue);
@@ -365,7 +348,6 @@
 	$alpHeight = @alpGetValue($alpHeight, $height);
 	$alpPopupDimensionMode = @alpGetValue($alpPopupDimensionMode, $popupDimensionMode);
 	$alpPopupResponsiveDimensionMeasure = @alpGetValue($alpPopupResponsiveDimensionMeasure, $popupResponsiveDimensionMeasure);
-
 	$alpMaxWidth = @alpGetValue($alpMaxWidth, $maxWidth);
 	$alpMaxHeight = @alpGetValue($alpMaxHeight, $maxHeight);
 	$duration = @alpGetValue($duration, $defaultDuration);
@@ -417,13 +399,11 @@
 			'name'=>'loggedin-user',
 			'value'=>'true',
 			'additionalHtml'=>'<span class="countries-radio-text allow-countries leftalignment">Logged In</span>',
-			//'newline' => false
 		),
 		array(
 			'name'=>'loggedin-user',
 			'value'=>'false',
 			'additionalHtml'=>'<span class="countries-radio-text">Not Logged In</span>',
-			//'newline' => true
 			)
 		);
 
@@ -450,8 +430,7 @@
 		array(
 			"title" => "Close Popup :",
 			"value" => "close",
-			"info" => "",
-		
+			"info" => "",		
 		),
 		array(
 			"title" => "Redirect :",
@@ -485,7 +464,6 @@
 			"value" => "all",
 			"id" => "select_all_post",
 			"class" => "input_group",
-			// "checked" => "checked",
 			"info" => ""
 		),
 		array(
@@ -520,7 +498,7 @@
 			"value" => "responsiveMode",
 			"info" => "",
 			"data-attributes" => array(
-				"class" => "js-responsive-mode"
+			"class" => "js-responsive-mode"
 			)
 		),
 		array(
@@ -528,15 +506,12 @@
 			"value" => "customMode",
 			"info" => "",
 			"data-attributes" => array(
-				"class" => "js-custom-mode"
-			)
-	
+			"class" => "js-custom-mode"
+			)	
 		)
 	);
-	function createRadiobuttons($elements, $name, $newLine, $selectedInput, $class)
-{
+	function createRadiobuttons($elements, $name, $newLine, $selectedInput, $class){
 	$str = "";
-
 	foreach ($elements as $key => $element) {
 		$breakLine = "";
 		$infoIcon = "";
@@ -578,7 +553,6 @@
 		$str .= "<span class=".$class.">".$element['title']."</span>
 				<input type=\"radio\" name=".$name." ".$attrStr."  id=".$id." class=".$radioclass." value=".$value." $checked>".$infoIcon.$breakLine;
 	}
-
 	echo $str;
 }
 
@@ -676,7 +650,7 @@
 				<p class="submit">				
 					<input type="submit" id="alp-save-button" class="btn btn-primary" value="<?php echo 'Save Changes'; ?>"><span></span>
 						<?php if( !empty($pageUrl)): ?> 
-							<input type="button" id="alp-preview"  class="btn btn-primary alp-popup-preview alp-popup-general-option" data-page-url="<?php echo $pageUrl; ?>" value="Preview"> 
+							<!-- <input type="button" id="alp-preview"  class="btn btn-primary alp-popup-preview alp-popup-general-option" data-page-url="<?php //echo $pageUrl; ?>" value="Preview">  -->
 							<!-- button-primary -->
 						<?php endif; ?>
 					<?php if (!ALP_CON_POPUP_PRO): ?>
@@ -692,8 +666,6 @@
 				<input  id="title" class="alp-js-popup-title" type="text" name="title" size="30" value="<?php echo esc_attr(@$title)?>" spellcheck="true" autocomplete="off" required = "required"  placeholder='Enter title here'>
 			</div>
 		</div>
-
-
 			<div id="left-main-div">
 				<div id="alp-general">
 					<div id="post-body" class="metabox-holder columns-2">
@@ -748,15 +720,13 @@
 											<span class="liquid-width">Max Width :</span>
 											<input class="" type="text" name="maxWidth" value="<?php echo esc_attr($alpMaxWidth);?>"  title="It must be number  + px or %" /><br>
 											<span class="liquid-width">Max Height :</span>
-											<input class="" type="text" name="maxHeight" value="<?php echo esc_attr(@$alpMaxHeight);?>"   title="It must be number  + px or %" /><br>											
-										 
+											<input class="" type="text" name="maxHeight" value="<?php echo esc_attr(@$alpMaxHeight);?>"   title="It must be number  + px or %" /><br>										 
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-
 					<div id="options">
 						<div id="post-body" class="metabox-holder columns-2">
 							<div id="postbox-container-2" class="postbox-container">
@@ -766,20 +736,17 @@
 										<h3 class="hndle ui-sortable-handle optionsTitle" style="cursor: pointer"><span><b>Options</b></span></h3>
 										<div class="optionsContent">										
 										    <span class="liquid-width">Show &quot;Close&quot; Button :</span><label class="switch" data-toggle="tooltip" data-placement="right" title="The Poppup Enable and Diasble Close Button Show & Close Button Delay time also support"><input class="input-width-static" id="close_button_delay" type="checkbox" name="closeButton" <?php echo $alpCloseButton;?> /><span class="slider round"></span></label><br><br>
-    									    <!-- <span class="liquid-width">Close button delay :</span><label class="switch"><input class="input-width-static" type="checkbox" name=""  <?php ?>/><span class="slider round"></span></label><br><br>-->
 											   <div class="acordion-main-div-content" id="close_button_dealy_value">
 													<span class="liquid-width">Close Button Delay Time :</span>
 													<input class="popup-delay delay_button_value" type="number" min="0" name="buttonDelayValue" value="<?php echo esc_attr($alpCloseButtonDelay);?>" title="It must be number"/>
 													<span class="span-percent">after X seconds</span><br><br>																										
 												</div>
-
 											<span class="liquid-width">Show PopUp Interval :</span><label class="switch" data-toggle="tooltip" data-placement="right" title="The Poppup Showing Intervel Time"><input class="input-width-static " id="js-popup-delay" type="checkbox" name="intervel" <?php echo $alpIntervelPopup; ?> /><span class="slider round"></span></label><br><br>												
 											 <div class="acordion-main-div-content" id="popup-delay-content">
 												<span class="liquid-width">Popup Interval Time :</span>
 												<input type="number" class="popup-delay-value popup-delay" name="interveltime" min="10" value="<?php echo esc_attr($alpIntervelPopupTime); ?>">
 												 <span class="span-percent">after X seconds</span><br><br>																										 
-											  </div>	
-																							
+											  </div>																								
 											  <span class="liquid-width">Show Repetition :</span><label class="switch" data-toggle="tooltip" data-placement="right" title="The Poppup Showing Repetition Based on time"><input class="input-width-static " id="js-popup-only-once" type="checkbox" name="repetitivePopup" <?php echo $alpRepetitivePopup;?> /><span class="slider round"></span></label><br><br>		                                       
 		                                        <div class="acordion-main-div-content" id="js-popup-only-once-content">
 			                                        <span class="liquid-width">Show Popup :</span>
@@ -796,23 +763,13 @@
 											<span class="liquid-width">Enable Window Scaling :</span><label class="switch" data-toggle="tooltip" data-placement="right" title="Enable the Popup Window Scaling"><input class="input-width-static" type="checkbox" name="scaling" <?php echo $alpScaling;?> /><span class="slider round"></span></label><br><br>
 
 											<span class="liquid-width">PopUp Overlay Colour :</span><span><input  class="alpOverlayColor" id="alpOverlayColor" type="color" name="alpOverlayColor" value="<?php echo esc_attr(@$alpOverlayColor); ?>" placeholder="#fff" title="Select the Popup Overlay Color"/></span><br><br>
-											<!-- <span class="liquid-width" id="createDescribeOpacitcy">Background overlay opacity:</span> -->
-											<!-- <input type="text" class="js-decimal" value="<?php// echo esc_attr($alpOpacity);?>" rel="<?php //echo esc_attr($alpOpacity);?>" name="opacity"/> -->
 											<input type="hidden" class="js-decimal" value="0.7" rel="<?php //echo esc_attr($alpOpacity);?>" name="opacity"/>
 
 											<span class="liquid-width" >PopUp Background Colour :</span><span id="alpBackgroundColorSet"><input  class="alpBackgroundColor" type="color" name="alp-content-background-color" value="<?php echo esc_attr(@$alpContentBackgroundColor); ?>" title="Select the Popup Background Color"/></span><br><br>
 											
 											<span class="liquid-width">Close PopUp on Overlay Click :</span><label class="switch" data-toggle="tooltip" data-placement="right" title="Close the Popup Overlay Click"><input class="input-width-static" type="checkbox" name="overlayClose" <?php echo $alpOverlayClose;?>><span class="slider round"></span></label><br><br>
 
-											<span class="liquid-width">Close PopUp on Content Click :</span><label class="switch" data-toggle="tooltip" data-placement="right" title="Close the Popup on Content Click"><input class="input-width-static js-checkbox-contnet-click" type="checkbox" name="contentClick" <?php echo $alpContentClick;?> /><span class="slider round"></span></label><br>
-
-											 <!-- <div class="alp-hide alp-full-width js-content-click-wrraper">
-		                                            <?php //echo createRadiobuttons($contentClickOptions, "content-click-behavior", true, esc_html($alpContentClickBehavior), "liquid-width"); ?>
-		                                            <div class="alp-hide js-readio-buttons-acordion-content alp-full-width">
-			                                            <span class="liquid-width">Url:</span><input class="input-width-static" type="text" name='click-redirect-to-url' value="<?php //echo esc_attr(@$alpClickRedirectToUrl); ?>">
-			                                            <span class="liquid-width">Redirect to new tab:</span><input type="checkbox" name="redirect-to-new-tab" <?php// echo $alpRedirectToNewTab; ?> >
-		                                            </div>
-	                                            </div> -->
+											<span class="liquid-width">Close PopUp on Content Click :</span><label class="switch" data-toggle="tooltip" data-placement="right" title="Close the Popup on Content Click"><input class="input-width-static js-checkbox-contnet-click" type="checkbox" name="contentClick" <?php echo $alpContentClick;?> /><span class="slider round"></span></label><br>									
 
 												<div class="alp-hide alp-full-width js-content-click-wrraper liquid-width">
 													<?php echo createRadiobuttons($contentClickOptions, "content-click-behavior", true, esc_html($alpContentClickBehavior), "liquid-width"); ?>
@@ -843,5 +800,5 @@
 				<input type="hidden" class="button-primary" value="<?php echo esc_attr(@$id);?>" name="hidden_popup_number" />
 			</div>
 		</div>
-		<?php require_once("Alp_Con_Customjs.php"); ?>
+		<?php require_once("Alp_Con_Custom_Script.php"); ?>
 	</form>

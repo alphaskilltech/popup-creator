@@ -216,13 +216,40 @@ function alp_con_Activate()
 		alpRenderPopupOpen($popupId);
 	}
 
+function getFromUrlPopupId()
+   {
 
+	$popupId = 0;
+	if (!isset($_SERVER['REQUEST_URI'])) {
+		return $popupId;
+	}
+
+	$pageUrl = @$_SERVER['REQUEST_URI'];
+	$byUrlkeys = array('alp_popup_id', 'alp_popup_preview_id');
+
+	foreach ($byUrlkeys as $urlkey) {
+		preg_match("/".$urlkey."=+[0-9]+/i", $pageUrl, $match);
+
+		if (!empty($match)) {
+			$matchingNumber = explode("=", $match[0]);
+			if (!empty($matchingNumber[1])) {
+				$popupId = (int)$matchingNumber[1];
+				return $popupId;
+			}
+			return 0;
+		}
+	}
+
+	return 0;
+   }
 
 	function alpOnloadPopup()
 	{
 		$page = get_queried_object_id ();
 		$popup = "alp_promotional_popup";
 		$popupId = ALPCONPopup::getPagePopupId($page,$popup);
+
+		$popupIdInPageUrl = getFromUrlPopupId();
 
 
 
@@ -235,10 +262,15 @@ function alp_con_Activate()
 		}
 		elseif(ALP_CON_POPUP_PKG > ALP_CON_POPUP_PKG_FREE) {
 			require_once(ALP_CON_POPUP_FILES ."/Alp_Con_Pro.php");
-			$popupId = ALPCONPopupPro::allowPopupInAllPages($page);
+			$popupId = ALPCONPopup::allowPopupInAllPages($page,'page');
+			$categories = ALPCONPopup::allowPopupInAllCategories($page);
+
 			if($popupId) {
 				showPopupInPages($popupId);
 			}
+		}
+		if ($popupIdInPageUrl) {
+			showPopupInPage($popupIdInPageUrl);
 		}
 		return false;
 	}

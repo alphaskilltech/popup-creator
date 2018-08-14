@@ -724,7 +724,8 @@ ALPCONPopup.prototype.alppopupSelectePages = function () {
 				jQuery("#alpcboxOverlay").removeClass("property_values");
 		    }
 	     }	 
-	 }else{
+	 }
+	 if(OptionsPages == "all"){
 		if(ShowAllPageID){
 			for (i = 0; i < ShowAllPageID.length; i++) {
 				jQuery('#alpcolorbox').removeClass("property_values");			
@@ -746,7 +747,8 @@ ALPCONPopup.prototype.alppopupSelectePosts = function () {
 			jQuery("#alpcboxOverlay").removeClass("property_values");
 	     }
 	  }
-	}else{
+	}
+	 if(OptionsPosts == "all"){
 		if(ShowAllPostID){
 			for (a = 0; a < ShowAllPostID.length; a++) {
 				jQuery('#alpcolorbox').removeClass("property_values");			
@@ -950,20 +952,18 @@ ALPCONPopup.prototype.colorboxEventsListener = function (){
 		}
 	});
 	   
-	
-			
-			if(popupSelectePages){
-				jQuery('#alpcolorbox').on("alpPopupClose", function () {
-					jQuery('#alpcolorbox').addClass("property_values");
-					jQuery("#alpcboxOverlay").addClass("property_values");
+		if(popupSelectePages){
+			jQuery('#alpcolorbox').on("alpPopupClose", function () {
+			jQuery('#alpcolorbox').addClass("property_values");
+			jQuery("#alpcboxOverlay").addClass("property_values");
 			that.alppopupSelectePages();
-				});
-			}	
-			if(popupSelectePosts){	
-				jQuery('#alpcolorbox').on("alpPopupClose", function () {
-					jQuery('#alpcolorbox').addClass("property_values");
-					jQuery("#alpcboxOverlay").addClass("property_values");
-				that.alppopupSelectePosts();
+		 });
+		}	
+		if(popupSelectePosts){	
+			jQuery('#alpcolorbox').on("alpPopupClose", function () {
+			jQuery('#alpcolorbox').addClass("property_values");
+			jQuery("#alpcboxOverlay").addClass("property_values");
+			that.alppopupSelectePosts();
 			});
 		}
 	
@@ -1208,10 +1208,10 @@ ALPCONPopup.prototype.alpShowColorboxWithOptions = function() {
 					jQuery.alpcolorbox.resize();
 				}
 				
-				var alppopupInit = new AplPopupInit(that.popupData);
-				alppopupInit.overallInit();
-				/* For specific popup Like Countdown AgeRestcion popups */
-				alppopupInit.initByPopupType();
+				// var AplPopupInit = new AplPopupInit(that.popupData);
+				// AplPopupInit.overallInit();
+				// AplPopupInit.initByPopupType();
+
 				if(popupDimensionMode == 'responsiveMode') {
 					 that.calculateContentDimensions();
 					 that.resizeDimension();				

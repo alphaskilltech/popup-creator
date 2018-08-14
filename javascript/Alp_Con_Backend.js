@@ -475,24 +475,6 @@ beckend.prototype.alpAllowCustomizedThemes = function(cureentRadioButton) {
 	}
 };
 
-// beckend.prototype.showCloseTextFieldForTheme = function() {
-	
-// 	var that = this;
-// 	this.alpAllowChangeButtonText();
-// 	jQuery("[name='theme']").bind("change", function() {
-// 		that.alpAllowChangeButtonText()
-// 	});
-// }
-// beckend.prototype.alpAllowChangeButtonText = function() {
-
-// 	if(jQuery("[alppoupnumber='4'][name='theme']").prop( "checked" )) {
-// 		jQuery(".theme-colse-text").removeClass("alp-hide");
-// 	}
-// 	else {
-// 		jQuery(".theme-colse-text").addClass("alp-hide");
-// 	}
-// }
-
 beckend.prototype.popupTimer = function() {
 
 	var startTimerOptions = {
@@ -527,7 +509,7 @@ beckend.prototype.popupTimer = function() {
 	});
 }
 
-beckend.prototype.updateQueryStringParameterpopup = function (uri, key, value) {
+beckend.prototype.updateQueryStringpopup = function (uri, key, value) {
 	var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
 	var separator = uri.indexOf('?') !== -1 ? "&" : "?";
 	if (uri.match(re)) {
@@ -537,9 +519,12 @@ beckend.prototype.updateQueryStringParameterpopup = function (uri, key, value) {
 		return uri + separator + key + "=" + value;
 	}
 };
+
 beckend.prototype.popupPreview = function () {
 	var that = this;
 	jQuery('#alp-preview').bind('click', function (e) {
+		alert("asdad");
+
 		e.preventDefault();
 		var previewButton = jQuery(this);
 
@@ -547,9 +532,10 @@ beckend.prototype.popupPreview = function () {
 		if(typeof tinymce != 'undefined' && !!tinymce.activeEditor) {
 			jQuery("[name='"+tinymce.activeEditor.id+"']").html(tinymce.activeEditor.getContent());
 		}
+
 		var data = {
-			action: 'save_popup_preview_data',
-			// ajax_Nonce: backendLocalData.ajax_Nonce,
+			action: 'preview_popup',
+			ajax_Nonce: backendLocalData.ajax_Nonce,
 			beforeSend: function () {
 				previewButton.prop('disabled', true);
 				previewButton.val('loading');
@@ -567,7 +553,7 @@ beckend.prototype.popupPreview = function () {
 			previewButton.prop('disabled', false);
 			previewButton.val('Preview');
 			var pageUrl  = previewButton.attr('data-page-url');
-			var redirectUrl = that.updateQueryStringParameterpopup(pageUrl, 'alp_popup_preview_id', popupId);
+			var redirectUrl = that.updateQueryStringpopup(pageUrl, 'alp_popup_preview_id', popupId);
 			newWindow.location = redirectUrl;
 		});
 	})

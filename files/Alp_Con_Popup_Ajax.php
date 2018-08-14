@@ -7,7 +7,7 @@ function alpSanitizeAjaxField($optionValue,  $isTextField = false) {
 }
 function alpPopupDelete()
 {
-	// check_ajax_referer('AlpConPopupBuilderDeleteNonce', 'ajax_Nonce');
+	check_ajax_referer('AlpConPopupBuilderDeleteNonce', 'ajax_Nonce');
 	$id = (int)@$_POST['popup_id'];
 
 	if($id == 0 || !$id) {
@@ -15,7 +15,7 @@ function alpPopupDelete()
 	}
 	require_once(ALP_CON_POPUP_CLASS.'/Alp_Con_Popup.php');
 	ALPCONPopup::delete($id);
-	// ALPCONPopup::removePopupFromPages($id);
+	ALPCONPopup::removePopupFromPages($id);
 	$args = array('popupId'=> $id);
 	do_action('alpPopupDelete', $args);
 }
@@ -64,7 +64,8 @@ if(!function_exists('load_my_script')){
 add_action('wp_enqueue_scripts', 'load_my_script');
 
 
-function PopupPreview() {
+function PopupPreviewShow() {
+
 	check_ajax_referer('popup-creator-ajax', 'ajax_Nonce');
 // alert("dfdfdf");
 	$formSerializedData = $_POST['popupDta'];
@@ -90,7 +91,7 @@ function PopupPreview() {
 	$popupPreviewPostData['allPostsStatus'] = '';
 	$popupPreviewPostData['allCustomPostsStatus'] = '';
 	$popupPreviewPostData['onScrolling'] = '';
-	$popupPreviewPostData['inActivityStatus'] = '';
+	$popupPreviewPostData['isActivePopupStatus'] = '';
 	$popupPreviewPostData['popup-timer-status'] = '';
 	$popupPreviewPostData['popup-schedule-status'] = '';
 	$popupPreviewPostData['alp-user-status'] = '';
@@ -141,22 +142,9 @@ function PopupPreview() {
 		'socialButtons'=> $socialButtons
 	);
 
-	$options = IntegrateExternalSettings::getPopupGeneralOptions($addToGeneralOptions);
+	//$options = IntegrateExternalSettings::getPopupGeneralOptions($addToGeneralOptions);
 
-	$html = stripslashes(alpSanitize("sg_popup_html"));
-	// $fblike = stripslashes(alpSanitize("sg_popup_fblike"));
-	// $ageRestriction = stripslashes(alpSanitize('sg_ageRestriction'));
-	// $social = stripslashes(alpSanitize('sg_social'));
-	// $image = alpSanitize('ad_image');
-	// $countdown = stripslashes(alpSanitize('sg_countdown'));
-	// $subscription = stripslashes(alpSanitize('sg_subscription'));
-	// $sgContactForm = stripslashes(alpSanitize('sg_contactForm'));
-	// $iframe = alpSanitize('iframe');
-	// $video = alpSanitize('video');
-	// $shortCode = stripslashes(alpSanitize('shortcode'));
-	// $mailchimp = stripslashes(alpSanitize('sg_popup_mailchimp'));
-	// $aweber = stripslashes(alpSanitize('sg_popup_aweber'));
-	// $exitIntent = stripslashes(alpSanitize('sg-exit-intent'));
+	$html = stripslashes(alpSanitize("alp_con_popup_html"));
 	$type = alpSanitize('type');
 
 
@@ -195,8 +183,8 @@ function PopupPreview() {
 
 	if($type == 'mailchimp' || $type == 'aweber') {
 
-		$currentActionName1 = IntegrateExternalSettings::getCurrentPopupAppPaths($type);
-		$classPath = $currentActionName1['app-path'];
+		//$currentActionName1 = IntegrateExternalSettings::getCurrentPopupAppPaths($type);
+		//$classPath = $currentActionName1['app-path'];
 	}
 
 	require_once($classPath ."/class/".$popupClassName.".php");
@@ -209,7 +197,6 @@ function PopupPreview() {
 		$lastId = $wpdb->get_var("SELECT LAST_INSERT_ID() FROM ".  $wpdb->prefix."alp_con_popup");
 		$postData['saveMod'] = '';
 		$postData['popupId'] = $lastId;
-		// $extensionManagerObj = new SGPBExtensionManager();
 		$extensionManagerObj->setPostData($postData);
 		$extensionManagerObj->save();
 		update_option('popupPreviewId', $lastId);
@@ -221,4 +208,4 @@ function PopupPreview() {
 	die();
 }
 
-add_action('wp_ajax_save_popup_preview_data', 'PopupPreview');
+add_action('wp_ajax _preview_popup', 'PopupPreviewShow');
