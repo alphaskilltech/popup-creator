@@ -763,7 +763,6 @@
 											<span class="liquid-width">Enable Window Scaling :</span><label class="switch" data-toggle="tooltip" data-placement="right" title="Enable the Popup Window Scaling"><input class="input-width-static" type="checkbox" name="scaling" <?php echo $alpScaling;?> /><span class="slider round"></span></label><br><br>
 
 											<span class="liquid-width">PopUp Overlay Colour :</span><span><input  class="alpOverlayColor" id="alpOverlayColor" type="color" name="alpOverlayColor" value="<?php echo esc_attr(@$alpOverlayColor); ?>" placeholder="#fff" title="Select the Popup Overlay Color"/></span><br><br>
-
 											<input type="hidden" class="js-decimal" value="0.7" rel="<?php //echo esc_attr($alpOpacity);?>" name="opacity"/>
 
 											<span class="liquid-width" >PopUp Background Colour :</span><span id="alpBackgroundColorSet"><input  class="alpBackgroundColor" type="color" name="alp-content-background-color" value="<?php echo esc_attr(@$alpContentBackgroundColor); ?>" title="Select the Popup Background Color"/></span><br><br>
