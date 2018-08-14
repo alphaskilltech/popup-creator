@@ -17,6 +17,7 @@ require_once(ALP_CON_POPUP_CLASS.'/AlpDataTable/Alp_Con_Table.php');
 	// }
 	// echo ALPFunctions::showReviewPopup();
 	// $ajaxNonce = wp_create_nonce("sgPopupBuilderImportNonce");
+
 ?>
 <div class="wrap">
 	<div class="headers-wrapper">
