@@ -1,0 +1,128 @@
+/*
+    Colorbox Core Style:
+
+    The following CSS is consistent between example themes and should not be altered.
+*/
+
+#alpcolorbox, #alpcboxOverlay, #alpcboxWrapper{position:absolute; top:0; left:0; z-index:9999; overflow:hidden;}
+
+#alpcboxWrapper {max-width:none;}
+
+#alpcboxOverlay{position:fixed; width:100%; height:100%;}
+
+#alpcboxMiddleLeft, #alpcboxBottomLeft{clear:left;}
+
+#alpcboxContent{position:relative;}
+
+#alpcboxLoadedContent{overflow:auto; -webkit-overflow-scrolling: touch;}
+
+#alpcboxTitle{margin:0;}
+
+#alpcboxLoadingOverlay, #alpcboxLoadingGraphic{position:absolute; top:0; left:0; width:100%; height:100%;}
+
+#alpcboxPrevious, #alpcboxNext, #alpcboxClose, #alpcboxSlideshow{cursor:pointer;}
+
+.alpcboxPhoto{float:left; margin:auto; border:0; display:block; max-width:none; -ms-interpolation-mode:bicubic;}
+
+.alpcboxIframe{width:100%; height:100%; display:block; border:0; padding:0; margin:0;}
+
+#alpcolorbox, #alpcboxContent, #alpcboxLoadedContent{box-sizing:content-box; -moz-box-sizing:content-box; -webkit-box-sizing:content-box;}
+
+.formfileds{
+    margin-bottom: 0px !important;
+    width: 90% !important;
+    border-left-width: 5px !important;
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+}
+button, html [type="button"], [type="reset"], [type="submit"]{
+    line-height:.5 !important;
+}
+.property_values{
+    display: none !important;
+}
+/* 
+    User Style:
+
+    Change the following styles to modify the appearance of Colorbox.  They are
+
+    ordered & tabbed in a way that represents the nesting of the generated HTML.
+*/
+
+#alpcboxOverlay{opacity: 0.9; filter: alpha(opacity = 90);}
+
+.alpcboxOverlayBg {background:#fff;}
+
+#alpcolorbox{outline:0;}
+
+    #alpcboxTopLeft{width:25px; height:25px; background:url(../../img/colorbox4/border1.png) no-repeat 0 0;}
+
+    #alpcboxTopCenter{height:25px; background:url(../../img/colorbox4/border1.png) repeat-x 0 -50px;}
+
+    #alpcboxTopRight{width:25px; height:25px; background:url(../../img/colorbox4/border1.png) no-repeat -25px 0;}
+
+    #alpcboxBottomLeft{width:25px; height:25px; background:url(../../img/colorbox4/border1.png) no-repeat 0 -25px;}
+
+    #alpcboxBottomCenter{height:25px; background:url(../../img/colorbox4/border1.png) repeat-x 0 -75px;}
+
+    #alpcboxBottomRight{width:25px; height:25px; background:url(../../img/colorbox4/border1.png) no-repeat -25px -25px;}
+
+    #alpcboxMiddleLeft{width:25px; background:url(../../img/colorbox4/border2.png) repeat-y 0 0;}
+
+    #alpcboxMiddleRight{width:25px; background:url(../../img/colorbox4/border2.png) repeat-y -25px 0;}
+
+    #alpcboxContent{background:#fff; overflow:hidden;}
+
+        .alpcboxIframe{background:#fff;}
+
+        #alpcboxError{padding:50px; border:1px solid #ccc;}
+
+        #alpcboxLoadedContent{padding:10px;}
+
+        #alpcboxTitle{position:absolute; bottom:0px; left:0; text-align:center; width:100%; color:#999;}
+
+        #alpcboxCurrent{position:absolute; bottom:0px; left:100px; color:#999;}
+
+        #alpcboxLoadingOverlay{background:#fff url(../../img/colorbox4/loading.gif) no-repeat 5px 5px;}
+
+        /* these elements are buttons, and may need to have additional styles reset to avoid unwanted base styles */
+
+        #alpcboxPrevious, #alpcboxNext, #alpcboxSlideshow, #alpcboxClose {border:0; padding:0; margin:0; overflow:visible; width:auto; background:none; }
+     
+        /* avoid outlines on :active (mouseclick), but preserve outlines on :focus (tabbed navigating) */
+
+        #alpcboxPrevious:active, #alpcboxNext:active, #alpcboxSlideshow:active, #alpcboxClose:active {outline:0;}
+
+        #alpcboxSlideshow{position:absolute; bottom:0px; right:42px; color:#444;}
+
+        #alpcboxPrevious{position:absolute; bottom:0px; left:0; color:#444;}
+
+        #alpcboxNext{position:absolute; bottom:0px; left:63px; color:#444;}
+
+        #alpcboxClose{position:absolute; bottom:0; right:0; display:block; color:#444;}
+/*
+  The following fixes a problem where IE7 and IE8 replace a PNG's alpha transparency with a black fill
+
+  when an alpha filter (opacity change) is set on the element or ancestor element.  This style is not applied to or needed in IE9.
+
+  See: http://jacklmoore.com/notes/ie-transparency-problems/
+*/
+.alpcboxIE #alpcboxTopLeft,
+
+.alpcboxIE #alpcboxTopCenter,
+
+.alpcboxIE #alpcboxTopRight,
+
+.alpcboxIE #alpcboxBottomLeft,
+
+.alpcboxIE #alpcboxBottomCenter,
+
+.alpcboxIE #alpcboxBottomRight,
+
+.alpcboxIE #alpcboxMiddleLeft,
+
+.alpcboxIE #alpcboxMiddleRight {
+
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF);
+
+}
