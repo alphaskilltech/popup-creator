@@ -1,6 +1,7 @@
 <script>
 $( document ).ready(function() {	
      $("#alpBackgroundColorSet"). find("input[type='color']").val("#ffffff");
+     $('[data-toggle="tooltip"]').tooltip();   
 
 });
 $(window).ready(function ()  {
@@ -38,7 +39,12 @@ $(window).ready(function ()  {
            $("#popup-delay-content").show();
 		}
 	// close popup button delay
-	$("#close_button_delay").change(function(){        
+    $("#close_button_dealy_value").find("input[type='number']").val("3");
+    $("#close_button_dealy_value").show();
+    
+
+	$("#close_button_delay").change(function(){ 
+        
         if($(this).is(":checked"))
         {
 			$("#close_button_dealy_value").find("input[type='number']").val("3");

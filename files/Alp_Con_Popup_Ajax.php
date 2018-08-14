@@ -31,17 +31,22 @@ function alpCloseReviewPanel()
 add_action('wp_ajax_close_review_panel', 'alpCloseReviewPanel');
 
 function alpChangePopupStatus() {
+
 	check_ajax_referer('AlpConPopupCreatoreDeactivateNonce', 'ajax_Nonce');
+
 	$popupId = (int)$_POST['popupId'];
 	
 	$obj = ALPCONPopup::findById($popupId);
 	$options = json_decode($obj->getOptions(), true);
-	$options['isActiveStatus'] = alpSanitizeAjaxField($_POST['popupStatus']);
+	$options['isActivePopupStatus'] = alpSanitizeAjaxField($_POST['PopupStatus']);
 	
 	$obj->setOptions(json_encode($options));
 	$obj->save();
 }	
-add_action('wp_ajax_change_popup_status', 'alpChangePopupStatus');
+add_action('wp_ajax_popup_change_popup_status', 'alpChangePopupStatus');
+
+
+
 // Postid 
 if(!function_exists('load_my_script')){
     function load_my_script() {

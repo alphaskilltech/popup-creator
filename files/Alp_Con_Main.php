@@ -11,15 +11,13 @@ require_once(ALP_CON_POPUP_CLASS.'/AlpDataTable/Alp_Con_Table.php');
 	}
 	$orderBy = 'id DESC';
 	$entries = ALPCONPopup::findAll($orderBy,$limit,$offset);
-<<<<<<< HEAD
-=======
 
 	// if(!ALP_CON_SHOW_POPUP_REVIEW) {
 	// 	echo ALPFunctions::addReview();
 	// }
 	// echo ALPFunctions::showReviewPopup();
 	// $ajaxNonce = wp_create_nonce("sgPopupBuilderImportNonce");
->>>>>>> done deleted
+
 ?>
 <div class="wrap">
 	<div class="headers-wrapper">

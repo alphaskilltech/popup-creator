@@ -132,7 +132,7 @@
 
 	$colorboxDeafultValues = array(
 		'escKey'=> true,
-		'closeButton' => false,
+		'closeButton' => true,
 		'scrolling'=> true,
 		'disable-page-scrolling'=> true,
 		'reopenAfterSubmission' => false,
@@ -151,8 +151,8 @@
 		'onScrolling' => false,	
 		'repetPopup' => false,
 		'opacity'=>0.7,					
-		'width' => '600px',
-		'height' => '440px',
+		'width' => '450px',
+		'height' => '340px',
 		'popup_dimension_mode' => 'customMode',
 		'popup_responsive_dimension_measure' => 60,		
 		'maxWidth' => false,						
@@ -674,12 +674,13 @@
 			</div>
 			<div class="button-wrapper">
 				<p class="submit">				
-					<input type="submit" id="alp-save-button" class="btn button-primary" value="<?php echo 'Save Changes'; ?>"><span></span>
+					<input type="submit" id="alp-save-button" class="btn btn-primary" value="<?php echo 'Save Changes'; ?>"><span></span>
 						<?php if( !empty($pageUrl)): ?> 
-							<input type="button" id="alp-preview"  class="btn button-primary alp-popup-preview button-primary alp-popup-general-option" data-page-url="<?php echo $pageUrl; ?>" value="Preview">
+							<input type="button" id="alp-preview"  class="btn btn-primary alp-popup-preview alp-popup-general-option" data-page-url="<?php echo $pageUrl; ?>" value="Preview"> 
+							<!-- button-primary -->
 						<?php endif; ?>
 					<?php if (!ALP_CON_POPUP_PRO): ?>
-						<input class="crud-to-pro" type="button" value="Upgrade to PRO version" onclick="window.open('<?php echo ALP_CON_POPUP_PRO_URL;?>')"><div class="clear"></div>
+						<input class="btn btn-danger crud-to-pro" type="button" value="Upgrade to PRO version" onclick="window.open('<?php echo ALP_CON_POPUP_PRO_URL;?>')"><div class="clear"></div>
 					<?php endif; ?>
 				</p>
 			</div>
@@ -764,7 +765,7 @@
 										<div class="handlediv optionsTitle" title="Click to toggle"><br></div>
 										<h3 class="hndle ui-sortable-handle optionsTitle" style="cursor: pointer"><span><b>Options</b></span></h3>
 										<div class="optionsContent">										
-										    <span class="liquid-width">Show &quot;Close&quot; Button :</span><label class="switch"><input class="input-width-static" id="close_button_delay" type="checkbox" name="closeButton" <?php echo $alpCloseButton;?> /><span class="slider round"></span></label><br><br>
+										    <span class="liquid-width">Show &quot;Close&quot; Button :</span><label class="switch" data-toggle="tooltip" data-placement="right" title="The Poppup Enable and Diasble Close Button Show & Close Button Delay time also support"><input class="input-width-static" id="close_button_delay" type="checkbox" name="closeButton" <?php echo $alpCloseButton;?> /><span class="slider round"></span></label><br><br>
     									    <!-- <span class="liquid-width">Close button delay :</span><label class="switch"><input class="input-width-static" type="checkbox" name=""  <?php ?>/><span class="slider round"></span></label><br><br>-->
 											   <div class="acordion-main-div-content" id="close_button_dealy_value">
 													<span class="liquid-width">Close Button Delay Time :</span>
@@ -772,38 +773,38 @@
 													<span class="span-percent">after X seconds</span><br><br>																										
 												</div>
 
-											<span class="liquid-width">Show PopUp Interval :</span><label class="switch"><input class="input-width-static " id="js-popup-delay" type="checkbox" name="intervel" <?php echo $alpIntervelPopup; ?> /><span class="slider round"></span></label><br><br>												
+											<span class="liquid-width">Show PopUp Interval :</span><label class="switch" data-toggle="tooltip" data-placement="right" title="The Poppup Showing Intervel Time"><input class="input-width-static " id="js-popup-delay" type="checkbox" name="intervel" <?php echo $alpIntervelPopup; ?> /><span class="slider round"></span></label><br><br>												
 											 <div class="acordion-main-div-content" id="popup-delay-content">
 												<span class="liquid-width">Popup Interval Time :</span>
 												<input type="number" class="popup-delay-value popup-delay" name="interveltime" min="10" value="<?php echo esc_attr($alpIntervelPopupTime); ?>">
 												 <span class="span-percent">after X seconds</span><br><br>																										 
 											  </div>	
 																							
-											  <span class="liquid-width">Show Repetition :</span><label class="switch"><input class="input-width-static " id="js-popup-only-once" type="checkbox" name="repetitivePopup" <?php echo $alpRepetitivePopup;?> /><span class="slider round"></span></label><br><br>		                                       
+											  <span class="liquid-width">Show Repetition :</span><label class="switch" data-toggle="tooltip" data-placement="right" title="The Poppup Showing Repetition Based on time"><input class="input-width-static " id="js-popup-only-once" type="checkbox" name="repetitivePopup" <?php echo $alpRepetitivePopup;?> /><span class="slider round"></span></label><br><br>		                                       
 		                                        <div class="acordion-main-div-content" id="js-popup-only-once-content">
 			                                        <span class="liquid-width">Show Popup :</span>
 			                                        <input type="number" class="before-scroling-percent" name="repetitivePopupPeriod" min="10" value="<?php echo esc_attr($alpRepetitivePopupPeriod); ?>">
 			                                         <span class="span-percent">after X seconds</span><br><br>																										   
 		                                        </div> 
 
-											<span class="liquid-width">Enable Reposition :</span><label class="switch"><input class="input-width-static" type="checkbox" name="reposition" <?php echo $alpReposition;?> /><span class="slider round"></span></label><br><br>
+											<span class="liquid-width">Enable Reposition :</span><label class="switch" data-toggle="tooltip" data-placement="right" title="Enable the Popup Reposition"><input class="input-width-static" type="checkbox" name="reposition" <?php echo $alpReposition;?> /><span class="slider round"></span></label><br><br>
 
-											<span class="liquid-width">Enable Contant Scrolling :</span><label class="switch"><input class="input-width-static" type="checkbox" name="scrolling" <?php echo $alpScrolling;?> /><span class="slider round"></span></label><br><br>
+											<span class="liquid-width">Enable Contant Scrolling :</span><label class="switch" data-toggle="tooltip" data-placement="right" title="The Popup Content Scrolling or Not"><input class="input-width-static" type="checkbox" name="scrolling" <?php echo $alpScrolling;?> /><span class="slider round"></span></label><br><br>
 
-											<span class="liquid-width">Disable Page Scrolling :</span><label class="switch"><input class="input-width-static" id="DisableScrolling" type="checkbox" name="disable-page-scrolling" <?php echo $alpDisablePageScrolling;?> /><span class="slider round"></span></label><br><br>											
+											<span class="liquid-width">Disable Page Scrolling :</span><label class="switch" data-toggle="tooltip" data-placement="right" title="The Popup Overlay is Disable or Not"><input class="input-width-static" id="DisableScrolling" type="checkbox" name="disable-page-scrolling" <?php echo $alpDisablePageScrolling;?> /><span class="slider round"></span></label><br><br>											
 																				
-											<span class="liquid-width">Enable Window Scaling :</span><label class="switch"><input class="input-width-static" type="checkbox" name="scaling" <?php echo $alpScaling;?> /><span class="slider round"></span></label><br><br>
+											<span class="liquid-width">Enable Window Scaling :</span><label class="switch" data-toggle="tooltip" data-placement="right" title="Enable the Popup Window Scaling"><input class="input-width-static" type="checkbox" name="scaling" <?php echo $alpScaling;?> /><span class="slider round"></span></label><br><br>
 
-											<span class="liquid-width">PopUp Overlay Colour :</span><span><input  class="alpOverlayColor" id="alpOverlayColor" type="color" name="alpOverlayColor" value="<?php echo esc_attr(@$alpOverlayColor); ?>" placeholder="#fff"/></span><br><br>
+											<span class="liquid-width">PopUp Overlay Colour :</span><span><input  class="alpOverlayColor" id="alpOverlayColor" type="color" name="alpOverlayColor" value="<?php echo esc_attr(@$alpOverlayColor); ?>" placeholder="#fff" title="Select the Popup Overlay Color"/></span><br><br>
 											<!-- <span class="liquid-width" id="createDescribeOpacitcy">Background overlay opacity:</span> -->
 											<!-- <input type="text" class="js-decimal" value="<?php// echo esc_attr($alpOpacity);?>" rel="<?php //echo esc_attr($alpOpacity);?>" name="opacity"/> -->
 											<input type="hidden" class="js-decimal" value="0.7" rel="<?php //echo esc_attr($alpOpacity);?>" name="opacity"/>
 
-											<span class="liquid-width" >PopUp Background Colour :</span><span id="alpBackgroundColorSet"><input  class="alpBackgroundColor" type="color" name="alp-content-background-color" value="<?php echo esc_attr(@$alpContentBackgroundColor); ?>" /></span><br><br>
+											<span class="liquid-width" >PopUp Background Colour :</span><span id="alpBackgroundColorSet"><input  class="alpBackgroundColor" type="color" name="alp-content-background-color" value="<?php echo esc_attr(@$alpContentBackgroundColor); ?>" title="Select the Popup Background Color"/></span><br><br>
 											
-											<span class="liquid-width">Close PopUp on Overlay Click :</span><label class="switch"><input class="input-width-static" type="checkbox" name="overlayClose" <?php echo $alpOverlayClose;?>><span class="slider round"></span></label><br><br>
+											<span class="liquid-width">Close PopUp on Overlay Click :</span><label class="switch" data-toggle="tooltip" data-placement="right" title="Close the Popup Overlay Click"><input class="input-width-static" type="checkbox" name="overlayClose" <?php echo $alpOverlayClose;?>><span class="slider round"></span></label><br><br>
 
-											<span class="liquid-width">Close PopUp on Content Click :</span><label class="switch"><input class="input-width-static js-checkbox-contnet-click" type="checkbox" name="contentClick" <?php echo $alpContentClick;?> /><span class="slider round"></span></label><br>
+											<span class="liquid-width">Close PopUp on Content Click :</span><label class="switch" data-toggle="tooltip" data-placement="right" title="Close the Popup on Content Click"><input class="input-width-static js-checkbox-contnet-click" type="checkbox" name="contentClick" <?php echo $alpContentClick;?> /><span class="slider round"></span></label><br>
 
 											 <!-- <div class="alp-hide alp-full-width js-content-click-wrraper">
 		                                            <?php //echo createRadiobuttons($contentClickOptions, "content-click-behavior", true, esc_html($alpContentClickBehavior), "liquid-width"); ?>
@@ -821,9 +822,9 @@
 														<span >Redirect to New Tab : </span> &nbsp;&nbsp;&nbsp;<label class="switch"><input type="checkbox" name="redirect-to-new-tab" <?php echo $alpRedirectToNewTab; ?> ><span class="slider round"></span></label>
 											     	</div>
 												</div><br>												
-											<span class="liquid-width">Dismiss on &quot;esc&quot; Key :</span><label class="switch"><input class="input-width-static" type="checkbox" name="escKey"  <?php echo $alpEscKey;?>/><span class="slider round"></span></label><br><br>
+											<span class="liquid-width">Dismiss on &quot;esc&quot; Key :</span><label class="switch" data-toggle="tooltip" data-placement="right" title="Close the Popup on &quot;esc&quot; key press"><input class="input-width-static" type="checkbox" name="escKey"  <?php echo $alpEscKey;?>/><span class="slider round"></span></label><br><br>
 
-											<span class="liquid-width">Reopen After Form Submission :</span><label class="switch"><input class="input-width-static" type="checkbox" name="reopenAfterSubmission" <?php  echo $alpReopenAfterSubmission;?> /><span class="slider round"></span></label><br><br>											
+											<span class="liquid-width">Reopen After Form Submission :</span><label class="switch" data-toggle="tooltip" data-placement="right" title="Reopen the Popup on Form Submission"><input class="input-width-static" type="checkbox" name="reopenAfterSubmission" <?php  echo $alpReopenAfterSubmission;?> /><span class="slider round"></span></label><br><br>											
 
 											</div>
 										</div>
@@ -832,13 +833,13 @@
 							</div>
 						</div>							
 					</div>
-				</div>				
+				</div>							
 				<div class="clear"></div>
 				<?php
-				$isActivePopup = AlpConPopupGetData::isActivePopup(@$id);
-				if(!@$id) $isActivePopup = 'checked';
+				$isActivePopupCreator = AlpConPopupGetData::isActivePopupCreator(@$id);
+				if(!@$id) $isActivePopupCreator = 'checked';
 				?>
-                <input class="hide-element" name="isActiveStatus" data-switch-id="'. $id . '" type="checkbox" <?php echo $isActivePopup; ?> >
+                <input class="hide-element" name="isActivePopupStatus" data-switch-id="'. $id . '" type="checkbox" <?php echo $isActivePopupCreator; ?> >
 				<input type="hidden" class="button-primary" value="<?php echo esc_attr(@$id);?>" name="hidden_popup_number" />
 			</div>
 		</div>

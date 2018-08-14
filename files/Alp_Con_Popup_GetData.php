@@ -161,7 +161,7 @@ class AlpConPopupGetData {
 		return $subsFormList;
 	}
 
-	public static function isActivePopup($id) {
+	public static function isActivePopupCreator($id) {
 		
 		$obj = ALPCONPopup::findById($id);
 		if(empty($obj)) {
@@ -170,7 +170,7 @@ class AlpConPopupGetData {
 		$options = $obj->getOptions();
 		$options = json_decode($options, true);
 	
-		if(!isset($options['isActiveStatus']) || $options['isActiveStatus'] == 'on') {
+		if(!isset($options['isActivePopupStatus']) || $options['isActivePopupStatus'] == 'on') {
 			return "checked";
 		}
 		return "";

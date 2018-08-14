@@ -18,37 +18,37 @@ beckend.prototype.alpInit =  function() {
  	this.showCloseTextFieldForTheme();
  	this.popupReview();
 	this.popupTimer();
-	this.switchPopupActive();
+	this.ActiveswitchPopup();
 	this.initAccordions();
 	this.popupPreview();
 
  	
 }
-beckend.prototype.switchPopupActive = function() {
+beckend.prototype.ActiveswitchPopup = function() {
 	var that = this;
 
 	jQuery(".switch-checkbox").bind('change', function() {
-		var dataOptions = {};
+		var popupOptions = {};
 		var popupId = jQuery(this).attr('data-switch-id');
 		var ajax_Nonce = jQuery(this).attr('data-checkbox-ajax_Nonce');
-		dataOptions.ajax_Nonce = ajax_Nonce;	
-
+		popupOptions.ajax_Nonce = ajax_Nonce;	
 		if(jQuery(this).is(":checked")) {
-			that.popupStatusChenge('on', popupId, dataOptions);	
+			that.ChengepopupStatus('on', popupId, popupOptions);	
 		}
 		else {
-			that.popupStatusChenge('off', popupId, dataOptions);	
+			that.ChengepopupStatus('off', popupId, popupOptions);	
 		}
 	});
 };
 
-	beckend.prototype.popupStatusChenge = function(status, popupId, dataOptions) {
+	beckend.prototype.ChengepopupStatus = function(status, popupId, popupOptions) {
 		var data = {
-			action: 'change_popup_status',
-			ajax_Nonce: dataOptions.ajax_Nonce,
+			action: 'popup_change_popup_status',
+			ajax_Nonce: popupOptions.ajax_Nonce,
 			popupId: popupId,
-			popupStatus: status
+			PopupStatus: status
 		};
+		// alert(JSON.stringify(data));
 
 			jQuery.post(ajaxurl, data, function(response,d) {
 		
@@ -527,7 +527,6 @@ beckend.prototype.popupTimer = function() {
 	});
 }
 
-
 beckend.prototype.updateQueryStringParameterpopup = function (uri, key, value) {
 	var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
 	var separator = uri.indexOf('?') !== -1 ? "&" : "?";
@@ -557,8 +556,6 @@ beckend.prototype.popupPreview = function () {
 			},
 			popupDta: jQuery("#add-form").serialize()
 		};
-
-// alert("action");
 
 		var newWindow = window.open('');
 		jQuery.post(ajaxurl, data, function(response,d) {

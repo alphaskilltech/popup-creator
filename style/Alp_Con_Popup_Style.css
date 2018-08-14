@@ -25,13 +25,13 @@
 	clear: both;
 	width: 516px;
 	height: 700px;
-	background-image: url("../img/popuppro.png");
+	background-image: url("../img/popupprofeatures.png");
 	background-repeat: no-repeat; 	
 	cursor: pointer;
 }
 
 .large-text-code{
-	width: 100% !important;
+	width: 90% !important;
 	padding: 6px;
 }
 .widefat thead th{
@@ -97,7 +97,43 @@ a:hover.Delete_Color,
 }
 a:hover.Edit_Color,
 .Edit_Color{
-	color:#ced100;
+	color:#b6b825;
+}
+
+
+/* tooltip */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 110%;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+}
+.tooltip:hover .tooltiptext {
+    visibility: visible;
 }
 
 /* Pro Features */
@@ -300,17 +336,20 @@ div.alp-hide {
 	cursor: pointer;
 }
 
-.crud-to-pro {
+/* .crud-to-pro {
     float: right;
-    /* margin-top: 3px; */
     background-color: #D54E21;
     border: 1px solid #000000;
     color: white;
-    cursor: pointer;
-    
+    cursor: pointer;    
 	border-radius: 5px;
 	margin: 1px;
     padding: 6px 6px;
+} */
+
+.btn-danger{
+	float: right;
+    margin-right: 13px;
 }
 
 .alp-js-delete-link {

@@ -241,7 +241,6 @@ class ALPFunctions
 		wp_enqueue_script('alp_colorbox');
 		wp_register_style('alp_colorbox_theme', ALP_CON_APP_POPUP_URL . "/style/alpcolorbox/alpthemes.css", array(), ALP_CON_POPUP_VERSION);
 		wp_enqueue_style('alp_colorbox_theme');
-		
 		$ajax_Nonce = wp_create_nonce("alpPopupCreatorReview");
 
 		echo "<script>

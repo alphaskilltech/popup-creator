@@ -98,6 +98,7 @@ function alpPopupSave()
 
 		'duration' => (int)alpSanitize('duration'),
 		'escKey' => alpSanitize('escKey'),
+		'isActivePopupStatus' => alpSanitize('isActivePopupStatus'),
 		'scrolling' => alpSanitize('scrolling'),
 		'disable-page-scrolling' => alpSanitize('disable-page-scrolling'),
 		'scaling' => alpSanitize('scaling'),
@@ -298,3 +299,4 @@ function alpPopupSave()
 		exit();
 	}
 }
+

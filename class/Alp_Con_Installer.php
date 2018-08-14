@@ -58,7 +58,7 @@ class Alp_Con_Installer
 		if(is_multisite() && get_current_blog_id() == 1 ) {
 			global $wp_version;
 
-			if($wp_version >= '1.0.0') {
+			if($wp_version > '4.6.0') {
 				$sites = get_sites();
 			}else{
 				$sites = wp_get_sites();
@@ -141,7 +141,7 @@ class Alp_Con_Installer
 	// 	if(is_multisite()) {
 
 	// 		global $wp_version;
-	// 		if($wp_version >= '1.0.0') {
+	// 		if($wp_version > '4.6.0') {
 	// 			$sites = get_sites();
 	// 		}
 	// 		else {
@@ -150,7 +150,7 @@ class Alp_Con_Installer
 
 	// 		foreach($sites as $site) {
 
-	// 			if($wp_version >= '1.0.0') {
+	// 			if($wp_version > '4.6.0') {
 	// 				$blogId = $site->blog_id."_";
 	// 			}
 	// 			else {

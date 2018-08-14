@@ -24,16 +24,12 @@ require_once(ALP_CON_POPUP_FILES .'/Alp_Con_Functions.php');
 require_once(ALP_CON_POPUP_FILES .'/Alp_Con_Popup_GetData.php');
 require_once( ALP_CON_POPUP_CLASS .'/Alp_Con_Installer.php'); //cretae tables
 
-if (ALP_CON_POPUP_PKG > ALP_CON_POPUP_PKG_FREE) {
-	require_once( ALP_CON_POPUP_CLASS .'/Alp_Con_Pro_Installer.php'); //uninstall tables
-	require_once( ALP_CON_POPUP_FILES .'/Alp_Con_Popup_Pro.php'); //uninstall tables
-}
 require_once( ALP_CON_POPUP_STYLE .'/Alp_Con_Style.php' ); //include our css file
 require_once( ALP_CON_POPUP_JS .'/Alp_Con_Javascript.php' ); //include our js file
 require_once( ALP_CON_POPUP_FILES .'/Alp_Con_Selection.php' ); //include our js file
 
 register_activation_hook(__FILE__, 'alp_con_Activate');
-register_uninstall_hook(__FILE__, 'alp_con_Deactivate');
+// register_uninstall_hook(__FILE__, 'alp_con_Deactivate');
 
 add_action('wpmu_new_blog', 'alp_con_BlogPopup', 10, 6);
 
@@ -41,7 +37,7 @@ function alp_con_BlogPopup()
 {
 	Alp_Con_Installer::install();
 	if (ALP_CON_POPUP_PKG > ALP_CON_POPUP_PKG_FREE) {
-		Alp_Con_Pro_Installer::install();
+		Alp_Con_Installer::install();
 	}
 }
 
@@ -50,18 +46,17 @@ function alp_con_Activate()
 	update_option('ALP_CON_POPUP_VERSION', ALP_CON_POPUP_VERSION);
 	Alp_Con_Installer::install();
 	if (ALP_CON_POPUP_PKG > ALP_CON_POPUP_PKG_FREE) {
-		Alp_Con_Pro_Installer::install();
+		Alp_Con_Installer::install();
 	}
 }
 
-function alp_con_Deactivate()
-{
-	// delete_option('ALP_CON_POPUP_VERSION');
-	Alp_Con_Installer::uninstall();
-	if (ALP_CON_POPUP_PRO) {
-		Alp_Con_Pro_Installer::uninstall();
-	}
- }
+	// function alp_con_Deactivate()
+	// {
+	// 	Alp_Con_Installer::uninstall();
+	// 	if (ALP_CON_POPUP_PKG > ALP_CON_POPUP_PKG_FREE) {
+	// 		Alp_Con_Installer::uninstall();
+	// 	}
+	//  }
 
 	function alpRegisterScripts()
 	{
@@ -246,35 +241,6 @@ function alp_con_Deactivate()
 			}
 		}
 		return false;
-
-		// if(ALP_CON_POPUP_PRO){
-		// 	delete_option("ALP_CON_MULTIPLE_POPUP");
-	
-		// 	/* Retrun all popups id width selected On All Pages */
-		// 	$popupsId = ALPCONPopupPro::allowPopupInAllPages($page);
-	
-		// 	/* $popupsId[0] its last selected popup id */
-		// 	if(isset($popupsId[0])) {
-		// 		delete_option("ALP_CON_MULTIPLE_POPUP");
-		// 		if(count($popupsId) > 0) {
-		// 			update_option("ALP_CON_MULTIPLE_POPUP",$popupsId);
-		// 		}
-		// 		foreach ($popupsId as $queuePupupId) {
-	
-		// 			showPopupInPages($queuePupupId);
-		// 		}
-	
-		// 		$popupsId = json_encode($popupsId);
-		// 	}
-		// 	else {
-		// 		$popupsId = json_encode(array());
-		// 	}
-		// 	echo '<script type="text/javascript">
-		// 		SG_POPUPS_QUEUE = '.$popupsId.'</script>';
-		// }
-			// if($popupId != 0) {
-			// 	showPopupInPages($popupId);
-			// }
 	}
 
 	add_action('wp_head','alpOnloadPopup');
