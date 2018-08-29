@@ -68,7 +68,6 @@
 							ALP_CON_POPUP_DATA = [];
 							ALP_CON_POPUP_URL = '" . ALP_CON_POPUP_URL . "';
 							ALP_CON_POPUP_VERSION='" . $popupCreatorVersion . "_" . ALP_CON_POPUP_PKG . ";';
-
 							function alpAddEvent(element, eventName, fn) {
 								if (element.addEventListener)
 									element.addEventListener(eventName, fn, false);

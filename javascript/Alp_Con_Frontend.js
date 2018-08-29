@@ -571,12 +571,10 @@ ALPCONPopup.prototype.contentClickRedirect = function () {
 	var redirectToNewTab = popupData['redirect-to-new-tab'];
 	/* If has url for redirect */
 	if ((contentClickBehavior !== 'close' || clickRedirectToUrl !== '') && typeof contentClickBehavior !== 'undefined') {
-
 		jQuery('#alpcolorbox').css({
 			"cursor": 'pointer'
 		});
 	}
-
 	jQuery(".alp-current-popup-" + popupData['id']).bind('click', function () {
 		if (contentClickBehavior == 'close' || clickRedirectToUrl == '' || typeof contentClickBehavior == 'undefined') {
 			jQuery.alpcolorbox.close();
